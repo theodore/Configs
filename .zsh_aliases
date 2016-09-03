@@ -1,0 +1,65 @@
+alias l='ls'
+# comment this out for BSD
+alias ls='ls --color=auto --quoting-style=literal'
+alias la='ls -A'
+alias ll='ls -l'
+alias llh='ls -lh'
+
+alias cls='LANG=C ls'
+
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+
+
+alias d='sdcv'
+alias yd='ydcv'
+alias XP='cd -P /media/XP/Desktop'
+
+
+alias pv="ps -efH | $PAGER"
+# no comment cat
+alias nocomcat='grep -v "^#.*"'
+alias intkb='setxkbmap us intl'
+#alias git-proxy='git -c http.proxy=127.0.0.1:8087 -c http.sslVerify=false'
+
+# for arch linux
+alias makepkg='PKGEXT=.pkg.tar makepkg'
+#alias vpngate='sudo openvpn --config'
+#alias zbarcam='LD_PRELOAD=/usr/lib/libv4l/v4l1compat.so zbarcam'
+#alias zbarcam='LD_PRELOAD=/usr/lib/libv4l/v4l2convert.so zbarcam'
+#alias curlproxy='curl -x 127.0.0.1:8087 -k'
+#alias cam='mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0 -fps 15 -vf screenshot'
+#alias cam='mplayer tv:// -tv driver=v4l2:device=/dev/video0 -fps 15 -vf screenshot'
+# see arch wiki
+#alias camrec='mencoder tv:// -tv driver=v4l2:device=/dev/video0:forceaudio:adevice=/dev/dsp -ovc lavc -oac mp3lame -lameopts cbr:br=64:mode=3 -o filename.avi'
+alias axel='axel -a'
+
+# opposite of 'go'
+#alias come="firefox --new-tab \`zbarcam|sed 's/[^:]*://'\`"
+
+#alias mupdf='mupdf -r 96'
+alias mupdf='printf "use llpp!\n"'
+
+# german dictionary
+#gd() {
+    #grep -i "^$@" /mnt/Downloads/unsorted/cogdgomksd-22266115236-e768e9.txt
+#}
+
+# adapted from http://stackoverflow.com/questions/18755967/
+__get_input_device_ids() {
+
+    SEARCH=$1
+
+    if [ "$SEARCH" = "" ]; then 
+        exit 1
+    fi
+
+    xinput --list | awk -v search="$SEARCH" \
+        '$0 ~ search { match($0, /id=[0-9]+/);
+        if (RSTART) 
+            print substr($0, RSTART+3, RLENGTH-3)
+        }'
+}
+
+alias mouseon='for i in $(__get_input_device_ids "Logitech G500s Laser Gaming Mouse"); do xinput --set-prop $i "Device Enabled" 1; done'
+alias mouseoff='for i in $(__get_input_device_ids "Logitech G500s Laser Gaming Mouse"); do xinput --set-prop $i "Device Enabled" 0; done'
