@@ -1,0 +1,11 @@
+#!/bin/sh
+
+cp -uv ~/.vimrc .
+# remember we deleted some files
+#cp -auv ~/.vim .
+cp -uv ~/.zshrc.local .
+cp -uv ~/.zsh_aliases .
+
+for file in .vimrc .zshrc.local .zsh_aliases; do
+    diff -q ~/$file $file
+done

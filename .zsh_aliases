@@ -10,6 +10,8 @@ alias cls='LANG=C ls'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 
+alias gdb='gdb -q'
+
 
 alias d='sdcv'
 alias yd='ydcv'
