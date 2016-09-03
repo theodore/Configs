@@ -60,3 +60,9 @@ endif
 set tm=300 ttm=100
 
 set gp=egrep\ -n\ $*\ /dev/null
+"set tags=./tags;/tmp
+
+"todo
+"set hidden?
+nn <C-j> :bn<CR>
+nn <C-k> :bp<CR>
