@@ -1,0 +1,62 @@
+set nocp
+syn on
+set nu
+set hls is noic
+set ru showcmd
+set hi=500
+set sw=4 sts=4 et
+set fdm=marker
+set fdl=99
+" change on BSD
+set fencs=ucs-bom,utf-8,default,euc-cn,cp936,gb18030,big5,latin1
+set ai
+"set tw=72
+
+filetype plugin indent on
+
+if &term == "linux"
+    colo darkblue
+else " we have xterm-256color or screen (tmux)
+    set t_Co=32
+    colo slate
+endif
+
+" mappings
+nn \        :!sdcv `echo <cword> \| sed 's/^[^[:alnum:]]*\([[:alnum:]]*\).*/\1/g'` <CR>
+"vn \        :!echo <cword> \| xclip -selection clipboard
+nn Y        y$
+nn <F12>    :se ff=unix fenc=utf-8 nobomb \| up \| ne <CR>
+nn <C-F12>  :se ff=dos fenc=cp936 \| up \| ne <CR>
+cno w!!     sil w !sudo tee >/dev/null %
+
+" Some sophisticated settings
+" Uncomment to set: right margin = 80
+"match ErrorMsg /\%>80v.\+/
+
+" Start at where we were
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Undo diff's setting nowrap
+au VimEnter * if &diff | exe "windo set wrap" | endif
+
+" for JavaImp plugin
+" XXX not working when put in ftplugin/java.vim, i don't know
+"let g:JavaImpPaths = "/lib/jvm/default/src"
+let g:JavaImpPaths = $HOME . "/.vim/run/JavaImp"
+let g:JavaImpDataDir = $HOME . "/.vim/run/JavaImp"
+let g:JavaImpDocPaths = "/usr/share/doc/java8-openjdk/api"
+let g:JavaImpDocViewer = "firefox"
+
+" vimpager settings
+if exists('vimpager')
+    set nonu
+endif
+
+"set vi=""
+"set udir=~/.vim/undodir
+"set udf
+
+" I'm a faster typer :)
+set tm=300 ttm=100
+
+set gp=egrep\ -n\ $*\ /dev/null
