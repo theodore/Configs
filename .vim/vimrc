@@ -1,3 +1,4 @@
+" see defaults.vim
 set nocp
 syn on
 set nu
@@ -11,6 +12,10 @@ set fdl=99
 set fencs=ucs-bom,utf-8,default,euc-cn,cp936,gb18030,big5,latin1
 set ai
 "set tw=72
+set hid
+set shm=atToOI
+set fo+=mMj
+set wmnu
 
 filetype plugin indent on
 
@@ -66,3 +71,4 @@ set gp=egrep\ -n\ $*\ /dev/null
 "set hidden?
 nn <C-j> :bn<CR>
 nn <C-k> :bp<CR>
+nn <Tab> :bn<CR>

@@ -1,7 +1,7 @@
 "nn <buffer> <F5> :!gdb -q ./%< <CR>
 nn <buffer> <F6> :!java -cp bin %< <CR>
-"nn <buffer> <C-K> :JavaImpSilent <CR>
-"nn <buffer> K :JID <CR>
+nn <buffer> <C-K> :JavaImpSilent <CR>
+nn <buffer> K :JID <CR>
 
 
 
